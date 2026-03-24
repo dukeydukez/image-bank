@@ -13,8 +13,13 @@
  *   node upload.mjs ~/Downloads/headshot.jpg linkedin
  *   node upload.mjs ./ad-creative.png general
  *   node upload.mjs ~/Desktop/quote-card.jpg x
+ *   node upload.mjs ~/Downloads/kclc-post.jpg kclc/linkedin
+ *   node upload.mjs ~/Downloads/kclc-ad.png kclc/x
  *
- * Folders: linkedin, x, threads, general (default: general)
+ * Folders (Dwayne personal): linkedin, x, threads, general
+ * KCLC:    kclc/linkedin, kclc/x, kclc/threads, kclc/general
+ * Corex:   corex/instagram, corex/threads, corex/general
+ * Default: general
  */
 
 import { execSync } from "node:child_process";
@@ -25,7 +30,11 @@ const REPO_DIR = resolve(new URL(".", import.meta.url).pathname);
 const GITHUB_USER = "dukeydukez";
 const REPO_NAME = "image-bank";
 const BRANCH = "main";
-const VALID_FOLDERS = ["linkedin", "x", "threads", "general"];
+const VALID_FOLDERS = [
+  "linkedin", "x", "threads", "general",
+  "kclc/linkedin", "kclc/x", "kclc/threads", "kclc/general",
+  "corex/instagram", "corex/threads", "corex/general",
+];
 const MAX_FILE_SIZE_MB = 25;
 
 function buildRawUrl(folder, filename) {
